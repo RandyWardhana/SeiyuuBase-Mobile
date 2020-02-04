@@ -1,15 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the UI Kitten template
- * https://github.com/akveo/react-native-ui-kitten
- *
- * Documentation: https://akveo.github.io/react-native-ui-kitten/docs
- *
- * @format
- */
-
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import {
@@ -26,10 +14,8 @@ import {
   light as theme,
 } from '@eva-design/eva';
 
-/**
- * Use any valid `name` property from eva icons (e.g `github`, or `heart-outline`)
- * https://akveo.github.io/eva-icons
- */
+import { AppNavigator } from './AppNavigator';
+
 const HeartIcon = (style) => (
   <Icon {...style} name='heart'/>
 );
@@ -38,7 +24,7 @@ const App = () => (
   <>
     <IconRegistry icons={EvaIconsPack}/>
     <ApplicationProvider mapping={mapping} theme={theme}>
-      <Layout style={styles.container}>
+      {/* <Layout style={styles.container}>
         <Text style={styles.text} category='h1'>
           Welcome to UI Kitten 😻
         </Text>
@@ -51,7 +37,8 @@ const App = () => (
         <Button style={styles.likeButton} icon={HeartIcon}>
           LIKE
         </Button>
-      </Layout>
+      </Layout> */}
+      <AppNavigator />
     </ApplicationProvider>
   </>
 );
