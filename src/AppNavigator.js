@@ -1,8 +1,9 @@
 import React from 'react';
-import { createAppContainer, SafeAreaView } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator, SafeAreaView } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { BottomNavigation, BottomNavigationTab, Layout, Text, Icon, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import SplashScreen from './screens/SplashScreen';
 
 // React Navigation also requires installing additional dependencies:
 //
@@ -57,4 +58,11 @@ const TabNavigator = createBottomTabNavigator({
   tabBarComponent: TabBarComponent,
 });
 
-export const AppNavigator = createAppContainer(TabNavigator);
+const RootNavigator = createSwitchNavigator({
+  App: TabNavigator,
+  Splash: SplashScreen 
+}, {
+  initialRouteName: 'Splash'
+})
+
+export const AppNavigator = createAppContainer(RootNavigator);
