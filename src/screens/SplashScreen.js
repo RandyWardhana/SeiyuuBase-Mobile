@@ -35,17 +35,30 @@ export default class SplashScreen extends React.Component {
             }}>
             <Image
               style={{
-                width: 100,
-                height: 100
+                width: 249,
+                height: 249
               }}
               source={require('../assets/icon/Logo.png')}
             />
           </View>
-          <Text style={{
-            fontSize: 18,
-            color: 'white',
-            fontWeight: 'bold'
-          }}>A Site For Your Seiyuu Needs!</Text>
+          <View>
+            <Text style={{
+              fontSize: 18,
+              color: 'white',
+              fontWeight: 'bold',
+              alignItems: 'center',
+              textAlign: 'center',
+              marginBottom: 10
+            }}>Seiyuu Base</Text>
+
+            <Text style={{
+              fontSize: 14,
+              color: 'white',
+              textAlign: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+            }}>A Site For Your Seiyuu Needs!</Text>
+          </View>
         </View>
       </SafeAreaView>
     );
