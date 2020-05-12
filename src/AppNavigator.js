@@ -1,60 +1,55 @@
-import React from 'react';
-import { createAppContainer, createSwitchNavigator, SafeAreaView } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { BottomNavigation, BottomNavigationTab, Layout, Text, Icon, IconRegistry } from '@ui-kitten/components';
-import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import SplashScreen from './screens/SplashScreen';
+import React from 'react'
+import { createAppContainer, createSwitchNavigator, SafeAreaView } from 'react-navigation'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { BottomNavigation, BottomNavigationTab, Layout, Text, Icon, IconRegistry } from '@ui-kitten/components'
+import { EvaIconsPack } from '@ui-kitten/eva-icons'
 
-const UsersScreen = () => (
-  <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text category='h1'>USERS</Text>
-  </Layout>
-);
+import SplashScreen from './screens/SplashScreen'
+import { MainScreen } from './screens/MainScreen'
 
 const GiftsScreen = () => (
   <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     <Text category='h1'>GIFTS</Text>
   </Layout>
-);
+)
 
 const UserIcon = (style) => (
-  <Icon {...style} name='person-outline'/>
-);
+  <Icon {...style} name='person-outline' />
+)
 
 const GiftIcon = (style) => (
-  <Icon {...style} name='gift-outline'/>
-);
+  <Icon {...style} name='gift-outline' />
+)
 
 const TabBarComponent = ({ navigation }) => {
 
   const onSelect = (index) => {
-    const selectedTabRoute = navigation.state.routes[index];
-    navigation.navigate(selectedTabRoute.routeName);
-  };
+    const selectedTabRoute = navigation.state.routes[index]
+    navigation.navigate(selectedTabRoute.routeName)
+  }
 
   return (
     <SafeAreaView>
-    <IconRegistry icons={EvaIconsPack}/>
+      <IconRegistry icons={EvaIconsPack} />
       <BottomNavigation selectedIndex={navigation.state.index} onSelect={onSelect}>
-        <BottomNavigationTab title='USERS' icon={UserIcon}/>
-        <BottomNavigationTab title='GIFTS' icon={GiftIcon}/>
+        <BottomNavigationTab title='Home' icon={UserIcon} />
+        <BottomNavigationTab title='GIFTS' icon={GiftIcon} />
       </BottomNavigation>
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const TabNavigator = createBottomTabNavigator({
-  Users: UsersScreen,
-  Gifts: GiftsScreen,
+  Main: MainScreen,
 }, {
-  tabBarComponent: TabBarComponent,
-});
+    tabBarComponent: TabBarComponent,
+  })
 
 const RootNavigator = createSwitchNavigator({
   App: TabNavigator,
-  Splash: SplashScreen 
+  Splash: SplashScreen
 }, {
-  initialRouteName: 'Splash'
-})
+    initialRouteName: 'Splash'
+  })
 
-export const AppNavigator = createAppContainer(RootNavigator);
+export const AppNavigator = createAppContainer(RootNavigator)
