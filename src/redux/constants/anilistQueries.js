@@ -12,9 +12,11 @@ export const create = () => {
   })
 
   const getPokemon = (limit) => {
+    let limitData = limit || 10
+
     const request = gql`
     query {
-      pokemons(first: ${limit}) {
+      pokemons(first: ${limitData}) {
         name
       }
     }`

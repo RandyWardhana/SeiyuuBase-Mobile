@@ -31,36 +31,24 @@ const App = () => {
   }
 
   const barTheme = theme === 'light' ? 'dark-content' : 'light-content'
+  const backgroundBarTheme = theme === 'light' ? '#FFFFFF' : '#222B46'
 
   useEffect(() => {
     dispatch(getPokemons())
-    console.log('SEIYUs', seiyuuList)
-
   }, [])
+
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />
-      <StatusBar barStyle={barTheme} />
+      <StatusBar barStyle={barTheme} backgroundColor={backgroundBarTheme} />
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <ApplicationProvider {...eva} theme={eva[theme]}>
-          <AppNavigator />
-          {/* <MainScreen /> */}
+          {/* <AppNavigator /> */}
+          <MainScreen />
         </ApplicationProvider>
       </ThemeContext.Provider>
     </>
   )
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     seiyuu: state.seiyuu,
-//   }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     getPokemons: bindActionCreators(getPokemons, dispatch),
-//   }
-// }
 
 export default App;
