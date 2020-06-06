@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StatusBar } from 'react-native'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import * as eva from '@eva-design/eva'
@@ -22,6 +21,8 @@ const updateLocalTheme = (theme) => {
 const App = () => {
 
   const [theme, setTheme] = React.useState('light')
+  const seiyuuList = useSelector(state => state.seiyuu)
+  const dispatch = useDispatch();
 
   const toggleTheme = () => {
     const nextTheme = theme === 'light' ? 'dark' : 'light'
@@ -31,30 +32,35 @@ const App = () => {
 
   const barTheme = theme === 'light' ? 'dark-content' : 'light-content'
 
+  useEffect(() => {
+    dispatch(getPokemons())
+    console.log('SEIYUs', seiyuuList)
+
+  }, [])
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />
       <StatusBar barStyle={barTheme} />
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <ApplicationProvider {...eva} theme={eva[theme]}>
-          {/* <AppNavigator /> */}
-          <MainScreen />
+          <AppNavigator />
+          {/* <MainScreen /> */}
         </ApplicationProvider>
       </ThemeContext.Provider>
     </>
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    seiyuu: state.seiyuu,
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     seiyuu: state.seiyuu,
+//   }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getPokemons: bindActionCreators(getPokemons, dispatch),
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     getPokemons: bindActionCreators(getPokemons, dispatch),
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App;
