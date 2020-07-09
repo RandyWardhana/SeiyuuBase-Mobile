@@ -5,9 +5,9 @@ import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import * as eva from '@eva-design/eva'
 import DefaultPreference from 'react-native-default-preference'
+import { Action } from 'core-anilist-libs'
 
 import { AppNavigator } from './AppNavigator'
-import { getPokemons } from './redux/actions/seiyuuActions'
 import { MainScreen } from './screens/MainScreen'
 import { ThemeContext } from './theme-context';
 
@@ -34,7 +34,7 @@ const App = () => {
   const backgroundBarTheme = theme === 'light' ? '#FFFFFF' : '#222B46'
 
   useEffect(() => {
-    dispatch(getPokemons())
+    dispatch(Action.seiyuuActions.getPokemons())
   }, [])
 
   return (
