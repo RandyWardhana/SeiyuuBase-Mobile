@@ -43,8 +43,8 @@ const App = () => {
       <StatusBar barStyle={barTheme} backgroundColor={backgroundBarTheme} />
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <ApplicationProvider {...eva} theme={eva[theme]}>
-          {/* <AppNavigator /> */}
-          <MainScreen />
+          <AppNavigator />
+          {/* <MainScreen /> */}
         </ApplicationProvider>
       </ThemeContext.Provider>
     </>

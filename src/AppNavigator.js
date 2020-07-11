@@ -39,11 +39,9 @@ const TabBarComponent = ({ navigation }) => {
   )
 }
 
-const TabNavigator = createBottomTabNavigator({
+const TabNavigator = createSwitchNavigator({
   Main: MainScreen,
-}, {
-    tabBarComponent: TabBarComponent,
-  })
+})
 
 const RootNavigator = createSwitchNavigator({
   App: TabNavigator,
